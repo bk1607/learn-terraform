@@ -7,6 +7,6 @@ output "sample" {
 }
 
 variable "default1" {}
-output "sample1" {
+output "default1" {
   value = var.default1
 }
