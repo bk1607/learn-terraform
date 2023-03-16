@@ -6,3 +6,14 @@ resource "aws_instance" "ec2" {
     Name = "frontend"
   }
 }
+//resource "aws_route53_record" "frontend" {
+//  zone_id = "Z00815241ZW6NBO5CNYD8"
+//  name    = "frontend.devops2023.online"
+//  type    = "A"
+//  ttl     = 30
+//  records = [aws_instance.ec2.]
+//}
+
+output private_ip{
+  value = aws_instance.ec2.private_ip
+}
