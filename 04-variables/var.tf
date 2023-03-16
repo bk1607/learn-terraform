@@ -6,8 +6,14 @@ output "sample" {
   value = var.sample
 }
 
-variable "default"{
-}
+variable "default"{}
+
 output "default" {
   value = var.default
+}
+
+variable "cli"{}
+
+output "cli"{
+  value = var.cli
 }
