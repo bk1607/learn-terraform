@@ -1,3 +1,4 @@
-output "sample" {
-  value = "Hello world"
+resource "null_resource" "sg_id" {
+count = 3
 }
+
