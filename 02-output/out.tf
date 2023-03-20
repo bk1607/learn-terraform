@@ -21,7 +21,7 @@ resource "aws_security_group" "allow_tls" {
   }
 
   tags = {
-    Name = "${var.instances[count.index].name}-dev-sg"
+    Name = "${var.instances.name}-dev-sg"
   }
 }
 
