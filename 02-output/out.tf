@@ -1,10 +1,7 @@
-resource "null_resource" "sg_id" {
-count = length(var.instances)
-}
 
 resource "aws_security_group" "allow_tls" {
-  for_each =
-  name        = "${var.instances[]}"
+  count = length(var.instances)
+  name        = "${var.instances[count.index].name}-dev-sg"
   description = "Allow TLS inbound traffic"
 
   ingress {
@@ -24,7 +21,7 @@ resource "aws_security_group" "allow_tls" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "${var.instances[count.index].name}-dev-sg"
   }
 }
 
