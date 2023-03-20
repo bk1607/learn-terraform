@@ -1,10 +1,10 @@
 resource "null_resource" "sg_id" {
-count = 3
+count = length(var.instances)
 }
 
 resource "aws_security_group" "allow_tls" {
-  count = 3
-  name        = "allow_tls"
+  for_each =
+  name        = "${var.instances[]}"
   description = "Allow TLS inbound traffic"
 
   ingress {
@@ -31,3 +31,17 @@ resource "aws_security_group" "allow_tls" {
 //output "sg_id" {
 //  value = aws_security_group.allow_tls.id
 //}
+
+variable "instances" {
+  default = {
+    frontend = {
+      name = "frontend"
+    }
+    catalogue = {
+      name = "catalogue"
+    }
+    user = {
+      name = "user"
+    }
+  }
+}
