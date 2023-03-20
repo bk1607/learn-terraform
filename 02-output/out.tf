@@ -1,7 +1,7 @@
 
 resource "aws_security_group" "allow_tls" {
   count = length(var.instances)
-  name        = "${var.instances[count.index].name}-dev-sg"
+  name        = "${var.instances.name}-dev-sg"
   description = "Allow TLS inbound traffic"
 
   ingress {
