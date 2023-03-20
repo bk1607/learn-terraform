@@ -3,6 +3,7 @@ count = 3
 }
 
 resource "aws_security_group" "allow_tls" {
+  count = 3
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
 
