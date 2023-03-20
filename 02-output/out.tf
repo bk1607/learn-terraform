@@ -1,8 +1,7 @@
 
 resource "aws_security_group" "allow_tls" {
-  for_each = var.instances
-  component = each.value["name"]
-  name = "${component}-dev-sg"
+  count = length(var.instances)
+  name = "example-sg"
   description = "Allow TLS inbound traffic"
 
   ingress {
@@ -22,7 +21,7 @@ resource "aws_security_group" "allow_tls" {
   }
 
   tags = {
-    Name = "${component}-dev-sg"
+    Name = "example-sg"
   }
 }
 
