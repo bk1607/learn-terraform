@@ -12,3 +12,7 @@ data "aws_ami" "ami_id" {
   name_regex = "Centos-8-DevOps-Practice"
   owners = ["973714476881"]
 }
+
+output "ip_address" {
+  value = "public_ip : " + aws_instance.ec2.public_ip
+}
