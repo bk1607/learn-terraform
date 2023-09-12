@@ -14,5 +14,5 @@ data "aws_ami" "ami_id" {
 }
 
 output "ip_address" {
-  value = "public_ip : " + aws_instance.ec2.public_ip
+  value = "public_ip :  ${aws_instance.ec2.public_ip} "
 }
