@@ -1,9 +1,14 @@
 module "ec2" {
   source = "./ec2"
-  component = var.instances.component
-  instance_type = var.instances.instance_type
+  for_each = var.instances
+  component = each.value["component"]
+  instance_type = each.value["instance_type"]
 }
 variable "instances" {
-  component = "frontend"
-  instance_type = "t3.micro"
+  default = {
+    "frontend" = {
+      component = "frontend"
+      instance_type = "t3.micro"
+    }
+  }
 }
