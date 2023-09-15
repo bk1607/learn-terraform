@@ -3,6 +3,7 @@ module "ec2" {
   for_each = var.instances
   component = each.value["component"]
   instance_type = each.value["instance_type"]
+  sg_id = module.sg.sg_id
 }
 variable "instances" {
   default = {
@@ -12,3 +13,7 @@ variable "instances" {
     }
   }
 }
+module "sg" {
+  source = "./sg"
+}
+
