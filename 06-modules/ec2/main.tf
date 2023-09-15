@@ -7,12 +7,8 @@ resource "aws_instance" "ec2" {
   }
 }
 
-resource "aws_route53_record" "www" {
-  zone_id = "Z00815241ZW6NBO5CNYD8"
-  name    = "frontend.devops2023.online"
-  type    = "A"
-  ttl     = 300
-  records = [aws_instance.ec2.public_ip]
+output "private_ip" {
+  value = aws_instance.ec2.private_ip
 }
 
 
