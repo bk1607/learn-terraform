@@ -6,9 +6,7 @@ module "ec2" {
   sg_id = module.sg.sg_id
 }
 
-output "ips" {
-  value = module.ec2
-}
+
 module "route53" {
   source = "./route53"
   for_each = module.ec2
