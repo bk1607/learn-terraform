@@ -6,7 +6,9 @@ module "ec2" {
   sg_id = module.sg.sg_id
 }
 
-
+output "ips" {
+  value = module.ec2.private_ip
+}
 
 module "sg" {
   source = "./sg"
