@@ -7,7 +7,7 @@ module "ec2" {
 }
 
 output "ips" {
-  value = module.ec2.private_ip
+  value = module.ec2.private_ip_address
 }
 
 module "sg" {
