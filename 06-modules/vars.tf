@@ -5,8 +5,8 @@ variable "instances" {
       instance_type = "t3.micro"
     }
     "cart" = {
-      name = "cart"
-      type = "t2.micro"
+      component = "cart"
+      instance_type = "t2.micro"
     }
   }
 }
