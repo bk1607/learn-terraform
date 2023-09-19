@@ -1,11 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket = "terraform-state-bk"
-    key    = "ec2/terraform.tfstate"
-    region = "us-east-1"
-  }
-}
-
 data "aws_ami" "ami_id" {
   most_recent      = true
   name_regex       = "devops-practice-ansible"
