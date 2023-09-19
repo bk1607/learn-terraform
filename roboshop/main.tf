@@ -23,5 +23,5 @@ module "route53" {
   source = "./route53"
   for_each = module.ec2
   component = each.key
-  address = each.value["private_ip_address"]
+  address = each.value["pvt_ip"]
 }
