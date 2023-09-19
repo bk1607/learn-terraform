@@ -19,6 +19,13 @@ resource "aws_spot_instance_request" "ec2" {
   }
 }
 
+resource "aws_ec2_tag" "tags" {
+
+  key         = "Name"
+  resource_id = aws_spot_instance_request.ec2.spot_instance_id
+  value       = var.instance_name
+}
+
 variable "instance_type" {}
 variable "instance_name" {}
 variable "sg_id" {}
