@@ -4,13 +4,18 @@ data "aws_ami" "ami_id" {
   owners           = [data.aws_caller_identity.current.account_id]
 }
 
-
 data "aws_caller_identity" "current" {}
 
+data "aws_security_group" "security" {
+  name = "allow-all"
+
+
+}
 
 resource "aws_instance" "roboshop" {
   ami = data.aws_ami.ami_id.id
   instance_type = var.instance_type
+  security_groups = [data.aws_security_group.security.id]
   tags = {
     Name = var.instance_name
   }
