@@ -10,7 +10,7 @@ terraform {
 module "ec2" {
   source = "./ec2"
   for_each = var.instances
-  instance_name = each.key["name"]
-  instance_type = each.key["type"]
+  instance_name = each.value["name"]
+  instance_type = each.value["type"]
 }
 
