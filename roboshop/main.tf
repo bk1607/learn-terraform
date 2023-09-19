@@ -18,3 +18,10 @@ module "ec2" {
 module "sg" {
   source = "./sg"
 }
+
+module "route53" {
+  source = "./route53"
+  for_each = module.ec2
+  component = each.key
+  address = each.value["private_ip_address"]
+}
