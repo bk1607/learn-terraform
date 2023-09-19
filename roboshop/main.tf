@@ -12,5 +12,9 @@ module "ec2" {
   for_each = var.instances
   instance_name = each.value["name"]
   instance_type = each.value["type"]
+  sg_id = module.sg.sg_id
 }
 
+module "sg" {
+  source = "./sg"
+}
