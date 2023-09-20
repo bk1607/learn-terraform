@@ -30,9 +30,11 @@ variable "sg_id" {}
 #to get private_ip address of instances
 output "pvt_ip" {
   value = aws_spot_instance_request.ec2.private_ip
+  depends_on = [aws_spot_instance_request.ec2]
 }
 
 #to get resource_id of instance to create tags
 output "id" {
   value = aws_spot_instance_request.ec2.spot_instance_id
+  depends_on = [aws_spot_instance_request.ec2]
 }
