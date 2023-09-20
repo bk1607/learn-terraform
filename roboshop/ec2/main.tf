@@ -20,13 +20,7 @@ resource "aws_spot_instance_request" "ec2" {
   }
 }
 
-#this is used to create tags for spot requests
-resource "aws_ec2_tag" "tags" {
 
-  key         = "Name"
-  resource_id = aws_spot_instance_request.ec2.spot_instance_id
-  value       = var.instance_name
-}
 
 #variables should be defined
 variable "instance_type" {}
@@ -36,4 +30,9 @@ variable "sg_id" {}
 #to get private_ip address of instances
 output "pvt_ip" {
   value = aws_spot_instance_request.ec2.private_ip
+}
+
+#to get resource_id of instance to create tags
+output "id" {
+  value = aws_spot_instance_request.ec2.spot_instance_id
 }
