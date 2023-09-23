@@ -26,10 +26,3 @@ module "route53" {
   address = each.value["pvt_ip"]
 }
 
-module "tags" {
-  source = "./tags"
-  for_each = module.ec2
-  id = each.value["id"]
-  instance_name = each.key
-
-}
