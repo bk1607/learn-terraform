@@ -7,7 +7,7 @@ parameters = [
   },
   {
     name = "test2"
-    type = "string"
+    type = "String"
     value = "hello world"
   }
 ]
