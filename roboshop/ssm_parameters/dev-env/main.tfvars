@@ -1,9 +1,6 @@
-variable "parameters" {
-  default = [
-    {
+parameters = {
+
       name = "test"
       type = "String"
       value = "hello"
     }
-  ]
-}
