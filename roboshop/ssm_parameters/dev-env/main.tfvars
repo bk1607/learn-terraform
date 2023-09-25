@@ -4,7 +4,8 @@ parameters = [
     type  = "String"
     value = "hello universe"
 
-  ,
+  },
+  {
     name = "test2"
     type = "string"
     value = "hello world"
