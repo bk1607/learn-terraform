@@ -1,8 +1,13 @@
 parameters = [
   {
-    name  = "test"
+    name  = "test1"
     type  = "String"
-    value = "hello"
+    value = "hello universe"
+
+  ,
+    name = "test2"
+    type = "string"
+    value = "hello world"
   }
 ]
 
