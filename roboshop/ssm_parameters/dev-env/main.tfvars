@@ -1,8 +1,8 @@
 parameters = [
   {
-    name  = test
-    type  = String
-    value = hello
+    name  = "test"
+    type  = "String"
+    value = "hello"
   }
 ]
 
