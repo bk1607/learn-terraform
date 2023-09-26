@@ -9,8 +9,7 @@ resource "aws_iam_role" "example" {
                 "ssm:Describe*",
                 "ssm:Get*",
                 "ssm:List*"
-            ],
-            "Resource": "*"
+            ]
         }
     ]
 })
