@@ -1,6 +1,7 @@
 resource "aws_iam_role" "example" {
   name = "example"
   assume_role_policy = jsonencode({
+
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -9,7 +10,8 @@ resource "aws_iam_role" "example" {
                 "ssm:Describe*",
                 "ssm:Get*",
                 "ssm:List*"
-            ]
+            ],
+            "Resource": "*"
         }
     ]
 })
