@@ -9,7 +9,7 @@ data "aws_ami" "ami_id" {
 data "aws_caller_identity" "current" {}
 
 data "aws_iam_role" "test" {
-  name = "test_role"
+  name = "test_profile"
 }
 
 #create ec2 instance
