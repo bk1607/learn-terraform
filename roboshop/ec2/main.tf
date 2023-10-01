@@ -8,7 +8,7 @@ data "aws_ami" "ami_id" {
 #data block to get owner id to use in ami block
 data "aws_caller_identity" "current" {}
 
-data "aws_iam_role" "test" {
+data "aws_iam_instance_profile" "test" {
   name = "test_profile"
 }
 
@@ -17,7 +17,7 @@ resource "aws_instance" "ec2" {
   ami = data.aws_ami.ami_id.id
   instance_type = var.instance_type
   vpc_security_group_ids = [var.sg_id]
-  iam_instance_profile = data.aws_iam_role.test.name
+  iam_instance_profile = data.aws_iam_instance_profile.test.name
   tags = {
     Name = var.instance_name
   }
