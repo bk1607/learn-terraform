@@ -44,3 +44,8 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
   policy_arn = aws_iam_policy.example.arn
 }
 
+#we need to create an instance profile for our role to attach
+resource "aws_iam_instance_profile" "test_profile" {
+  name = "test_profile"
+  role = aws_iam_role.test_role.name
+}
