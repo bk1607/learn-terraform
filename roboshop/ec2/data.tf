@@ -8,6 +8,6 @@ data "aws_ami" "ami_id" {
 #data block to get owner id to use in ami block
 data "aws_caller_identity" "current" {}
 
-data "aws_iam_instance_profile" "test" {
-  name = "test_profile"
-}
+#data "aws_iam_instance_profile" "test" {
+#  name = "test_profile"
+#}
