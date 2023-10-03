@@ -2,10 +2,10 @@
 resource "aws_instance" "ec2" {
   ami = data.aws_ami.ami_id.id
   instance_type = var.instance_type
-  vpc_security_group_ids = [var.sg_id]
+  vpc_security_group_ids = [aws_security_group.allow_tls.id]
   iam_instance_profile = "${var.component}-${var.env}-role"
   tags = {
-    Name = var.instance_name
+    Name = "${var.component}-${var.env}"
   }
 }
 
@@ -68,7 +68,7 @@ resource "aws_iam_instance_profile" "test_profile" {
   role = aws_iam_role.test_role.name
 }
 
-# this module is used for creating route 53 records
+# this  is used for creating route 53 records
 resource "aws_route53_record" "www" {
   zone_id = "Z00815241ZW6NBO5CNYD8"
   name    = "${var.component}-${var.env}.devops2023.online"
@@ -77,3 +77,29 @@ resource "aws_route53_record" "www" {
   records = [aws_instance.ec2.private_ip]
   depends_on = [aws_instance.ec2]
 }
+
+#this is used for creating sg
+resource "aws_security_group" "allow_tls" {
+  name        = "${var.component}-${var.env}-sg"
+  description = "Allow TLS inbound traffic"
+
+
+  ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+

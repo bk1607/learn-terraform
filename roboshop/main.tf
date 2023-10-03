@@ -10,11 +10,9 @@ terraform {
 module "ec2" {
   source = "./ec2"
   for_each = var.instances
-  instance_name = each.value["name"]
   instance_type = each.value["type"]
   component = each.value["name"]
   env = each.value["environment"]
-  sg_id = module.sg.sg_id
 }
 
 #module "iam_user" {
@@ -23,9 +21,10 @@ module "ec2" {
 #  component = each.value["name"]
 #  env = each.value["environment"]
 #}
-module "sg" {
-  source = "./sg"
-}
+
+#module "sg" {
+#  source = "./sg"
+#}
 
 #module "route53" {
 #  source = "./route53"
