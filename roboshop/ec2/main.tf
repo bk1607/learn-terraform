@@ -67,3 +67,12 @@ resource "aws_iam_instance_profile" "test_profile" {
   name = "${var.component}-${var.env}-role"
   role = aws_iam_role.test_role.name
 }
+
+# this module is used for creating route 53 records
+resource "aws_route53_record" "www" {
+  zone_id = "Z00815241ZW6NBO5CNYD8"
+  name    = "${var.component}.devops2023.online"
+  type    = "A"
+  ttl     = "300"
+  records = [pvt_ip]
+}
