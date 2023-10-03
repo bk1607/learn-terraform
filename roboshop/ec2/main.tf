@@ -64,6 +64,6 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
 
 #we need to create an instance profile for our role to attach
 resource "aws_iam_instance_profile" "test_profile" {
-  name = "${var.component}-${var.env}-profile"
+  name = "${var.component}-${var.env}-role"
   role = aws_iam_role.test_role.name
 }
