@@ -1,6 +1,6 @@
 # to create iam policy
 resource "aws_iam_policy" "example" {
-  name = "example"
+  name = "${var.component}-${env}-policy"
   policy = jsonencode({
 
     "Version": "2012-10-17",
@@ -22,7 +22,7 @@ resource "aws_iam_policy" "example" {
 # to create a role
 
 resource "aws_iam_role" "test_role" {
-  name = "test_role"
+  name = "${var.component}-${env}-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -46,6 +46,6 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
 
 #we need to create an instance profile for our role to attach
 resource "aws_iam_instance_profile" "test_profile" {
-  name = "test_profile"
+  name = "${var.component}-${env}-profile"
   role = aws_iam_role.test_role.name
 }

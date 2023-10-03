@@ -15,6 +15,12 @@ module "ec2" {
   sg_id = module.sg.sg_id
 }
 
+module "iam_user" {
+  source = "./iam_user"
+  for_each = var.instances
+  component = each.value["name"]
+  env = each.value["environment"]
+}
 module "sg" {
   source = "./sg"
 }

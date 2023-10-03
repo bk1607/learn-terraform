@@ -10,12 +10,6 @@ resource "aws_instance" "ec2" {
 }
 
 
-
-#variables should be defined
-variable "instance_type" {}
-variable "instance_name" {}
-variable "sg_id" {}
-
 #to get private_ip address of instances
 output "pvt_ip" {
   value = aws_instance.ec2.private_ip

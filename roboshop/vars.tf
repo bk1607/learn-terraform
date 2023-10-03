@@ -3,6 +3,7 @@ variable "instances" {
     "frontend" = {
       name = "frontend"
       type = "t3.micro"
+      environment = "dev"
     }
 
   }
