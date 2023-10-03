@@ -12,15 +12,17 @@ module "ec2" {
   for_each = var.instances
   instance_name = each.value["name"]
   instance_type = each.value["type"]
+  component = each.value["name"]
+  env = each.value["environment"]
   sg_id = module.sg.sg_id
 }
 
-module "iam_user" {
-  source = "./iam_user"
-  for_each = var.instances
-  component = each.value["name"]
-  env = each.value["environment"]
-}
+#module "iam_user" {
+#  source = "./iam_user"
+#  for_each = var.instances
+#  component = each.value["name"]
+#  env = each.value["environment"]
+#}
 module "sg" {
   source = "./sg"
 }
