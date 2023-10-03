@@ -71,7 +71,7 @@ resource "aws_iam_instance_profile" "test_profile" {
 # this module is used for creating route 53 records
 resource "aws_route53_record" "www" {
   zone_id = "Z00815241ZW6NBO5CNYD8"
-  name    = "${var.component}.devops2023.online"
+  name    = "${var.component}-${var.env}.devops2023.online"
   type    = "A"
   ttl     = "300"
   records = [aws_instance.ec2.private_ip]
