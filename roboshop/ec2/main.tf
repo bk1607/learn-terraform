@@ -11,10 +11,10 @@ resource "aws_instance" "ec2" {
 
 
 #to get private_ip address of instances
-output "pvt_ip" {
-  value = aws_instance.ec2.private_ip
-  depends_on = [aws_instance.ec2]
-}
+#output "pvt_ip" {
+#  value = aws_instance.ec2.private_ip
+#  depends_on = [aws_instance.ec2]
+#}
 
 # to create iam policy
 resource "aws_iam_policy" "example" {
@@ -74,5 +74,6 @@ resource "aws_route53_record" "www" {
   name    = "${var.component}.devops2023.online"
   type    = "A"
   ttl     = "300"
-  records = [pvt_ip]
+  records = [aws_instance.ec2.private_ip]
+  depends_on = [aws_instance.ec2]
 }
