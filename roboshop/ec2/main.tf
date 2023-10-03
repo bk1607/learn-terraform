@@ -3,7 +3,7 @@ resource "aws_instance" "ec2" {
   ami = data.aws_ami.ami_id.id
   instance_type = var.instance_type
   vpc_security_group_ids = [var.sg_id]
-  iam_instance_profile = aws_iam_instance_profile.test_profile.name
+  iam_instance_profile = "${var.component}-${var.env}-role"
   tags = {
     Name = var.instance_name
   }
