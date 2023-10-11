@@ -2,3 +2,4 @@
 variable "instance_type" {}
 variable "env" {}
 variable "component" {}
+variable "Monitor" {}

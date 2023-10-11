@@ -6,6 +6,7 @@ resource "aws_instance" "ec2" {
   iam_instance_profile = "${var.component}-${var.env}-role"
   tags = {
     Name = "${var.component}-${var.env}"
+    Monitor = var.Monitor
   }
 }
 
@@ -99,7 +100,7 @@ resource "aws_security_group" "allow_tls" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "${var.component}-${var.env}-sg"
   }
 }
 
