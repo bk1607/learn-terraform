@@ -5,4 +5,4 @@ state_file:
 dev-apply:
 	terraform apply -auto-approve -var-file=env-dev/main.tfvars
 dev-destroy:
-	terraform destroy -auto-approve
+	terraform destroy -auto-approve -var-file=env-dev/main.tfvars
