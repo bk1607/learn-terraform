@@ -1,22 +1,22 @@
-#create ec2 instance
-resource "aws_instance" "ec2" {
-  ami = data.aws_ami.ami_id.id
+resource "aws_spot_instance_request" "ec2" {
+  ami           = data.aws_ami.ami_id.id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
   iam_instance_profile = "${var.component}-${var.env}-role"
+  spot_type = "persistent"
+  instance_interruption_behavior = "stop"
+  wait_for_fulfillment = true
   tags = {
-    Name = "${var.component}-${var.env}"
+    Name = var.component
     Monitor = var.Monitor
   }
+
 }
-
-
-#to get private_ip address of instances
-#output "pvt_ip" {
-#  value = aws_instance.ec2.private_ip
-#  depends_on = [aws_instance.ec2]
-#}
-
+resource "aws_ec2_tag" "tag1" {
+  resource_id = aws_spot_instance_request.ec2.id
+  key         = "Name"
+  value       = var.component
+}
 # to create iam policy
 resource "aws_iam_policy" "example" {
   name = "${var.component}-${var.env}-policy"
@@ -75,8 +75,8 @@ resource "aws_route53_record" "www" {
   name    = "${var.component}-${var.env}.devops2023.online"
   type    = "A"
   ttl     = "300"
-  records = [aws_instance.ec2.private_ip]
-  depends_on = [aws_instance.ec2]
+  records = [aws_spot_instance_request.ec2.private_ip]
+  depends_on = [aws_spot_instance_request.ec2]
 }
 
 #this is used for creating sg
@@ -117,4 +117,21 @@ resource "aws_security_group" "allow_tls" {
 #    ]
 #
 #  }
+#}
+
+#create ec2 instance
+#resource "aws_instance" "ec2" {
+#  ami = data.aws_ami.ami_id.id
+#  instance_type = var.instance_type
+#  vpc_security_group_ids = [aws_security_group.allow_tls.id]
+#  iam_instance_profile = "${var.component}-${var.env}-role"
+#  tags = {
+#    Name = "${var.component}-${var.env}"
+#    Monitor = var.Monitor
+#  }
+#}
+#to get private_ip address of instances
+#output "pvt_ip" {
+#  value = aws_instance.ec2.private_ip
+#  depends_on = [aws_instance.ec2]
 #}
