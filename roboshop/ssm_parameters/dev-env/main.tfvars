@@ -35,6 +35,8 @@ secrets = [
   { name = "dev.shipping.mysql_user", value = "root", type = "SecureString"},
   { name = "dev.dispatch.amqp_user", value = "roboshop", type = "SecureString"},
   { name = "dev.dispatch.amqp_pass", value = "roboshop123", type = "SecureString"},
+  { name = "dev.docdb_user", value = "roboshop", type = "SecureString"},
+  { name = "dev.docdb_pass", value = "roboshop123", type = "SecureString"}
 ]
 
 
