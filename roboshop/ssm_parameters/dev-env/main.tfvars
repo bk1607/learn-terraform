@@ -36,7 +36,9 @@ secrets = [
   { name = "dev.dispatch.amqp_user", value = "roboshop", type = "SecureString"},
   { name = "dev.dispatch.amqp_pass", value = "roboshop123", type = "SecureString"},
   { name = "dev.docdb_user", value = "roboshop", type = "SecureString"},
-  { name = "dev.docdb_pass", value = "roboshop123", type = "SecureString"}
+  { name = "dev.docdb_pass", value = "roboshop123", type = "SecureString"},
+  { name = "dev.rds_user", value = "roboshop", type = "SecureString"},
+  { name = "dev.rds_pass", value = "roboshop123", type = "SecureString"}
 ]
 
 
